@@ -1,11 +1,12 @@
 name: 'S3-Bucket'
 
 on:
-  push:
+  pull_request:
+  #push:
     branches:  [main] 
       
     paths:
-      - 'bucket-aws-cloud/**'
+      - 'aws-s3-cloud/**'
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -16,7 +17,7 @@ jobs:
     name: 'terraform apply S3'
     runs-on: ubuntu-latest
     env:
-      TF_WORKING_DIR: 'bucket-aws-cloud'
+      TF_WORKING_DIR: 'aws-s3-cloud'
 
     defaults:
       run:
